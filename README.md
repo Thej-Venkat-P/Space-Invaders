@@ -1,5 +1,5 @@
 # Space Invader
-This is a Python project that implements a classic arcade game called Space Invader. The game involves shooting down alien invaders using a spaceship and avoiding their bullets.
+This is a Python project that implements a classic arcade game called Space Invader. The game involves shooting down alien invaders using a spaceship before they reach you.
 
 ## Installation
 To run this project, you need to have Python 3 installed on your system. You can download Python 3 from the official website.

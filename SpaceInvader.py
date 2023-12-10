@@ -192,6 +192,7 @@ def game_loop():
             break
 
 
+# Main Game Function
 def space_invaders_game():
     initialize_variables()
     spawning()

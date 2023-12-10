@@ -121,9 +121,9 @@ class Enemy:
             global score, list_of_enemies, WN, game_speed_factor
             score += 1
             game_speed_factor += 0.05
-            if str(score)[-1] == "0":
+            if str(score)[-1] in ("0", "5"):
                 list_of_enemies.append(Enemy())
-                game_speed_factor -= 0.4
+                game_speed_factor -= 0.15
             self.enemy.ht()
             self.set_position()
             WN.update()
@@ -179,7 +179,7 @@ def set_keybindings():
 
 
 def game_loop():
-    global list_of_enemies, hero, bullet
+    global list_of_enemies, hero, bullet, game_over_message
     # Main Game Loop
     while 1:
         try:

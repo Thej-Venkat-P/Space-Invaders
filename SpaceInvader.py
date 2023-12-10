@@ -196,6 +196,7 @@ def space_invaders_game():
     spawning()
     set_keybindings()
     game_loop()
+    return score
 
 
 if __name__ == "__main__":

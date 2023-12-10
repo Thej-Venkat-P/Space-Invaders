@@ -141,11 +141,12 @@ class Enemy:
 
 # Game Over Function
 def game_over():
-    global score, game_over_message
+    global score, game_over_message, WN
     try:
         turtle.clearscreen()
     except Exception:
-        initialize_variables()
+        turtle.setup(SCREEN_WIDTH, SCREEN_HEIGHT)
+        WN = turtle.Screen()
         turtle.clearscreen()
     turtle.goto(0, 0)
     turtle.write(

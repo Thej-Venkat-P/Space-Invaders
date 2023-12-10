@@ -3,9 +3,10 @@ import random
 
 
 def initialize_variables():
-    global game_over_message, score, SCREEN_WIDTH, SCREEN_HEIGHT, WN, line, Hero_im, bulletim, list_of_enemies, hero, bullet
+    global game_speed_factor, game_over_message, score, SCREEN_WIDTH, SCREEN_HEIGHT, WN, line, Hero_im, bulletim, list_of_enemies, hero, bullet
     # Global Variables
     game_over_message = False
+    game_speed_factor = 1
     score = 0
     turtle.title("Space Invaders")
     SCREEN_WIDTH = 500
@@ -86,8 +87,8 @@ class Bullet:
             return False
         else:
             self.bullet.st()
-            self.bullet.fd(0.5)
-            self.y += 0.5
+            self.bullet.fd(0.5 * game_speed_factor)
+            self.y += 0.5 * game_speed_factor
             return True
 
 
@@ -117,10 +118,12 @@ class Enemy:
         if (bullet.y - 10 <= self.y < bullet.y + 11) and (
             bullet.x - 10 <= self.x < bullet.x + 11
         ):
-            global score, list_of_enemies, WN
+            global score, list_of_enemies, WN, game_speed_factor
             score += 1
+            game_speed_factor += 0.05
             if str(score)[-1] == "0":
                 list_of_enemies.append(Enemy())
+                game_speed_factor -= 0.4
             self.enemy.ht()
             self.set_position()
             WN.update()
@@ -133,8 +136,8 @@ class Enemy:
             print("Lost")
             game_over()
         else:
-            self.enemy.fd(0.1)
-            self.y -= 0.1
+            self.enemy.fd(0.1 * game_speed_factor)
+            self.y -= 0.1 * game_speed_factor
             self.hit_reg(bullet)
             return True
 
@@ -186,7 +189,6 @@ def game_loop():
             WN.update()
 
         except Exception as e:
-            print("Error Occurred: ", e)
             if not game_over_message:
                 game_over()
             break
